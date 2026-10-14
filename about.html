@@ -1,28 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - StudentPortal</title>
+
+    <title>About Us | StudentPortal</title>
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">StudentPortal</a>
-            <a class="nav-link text-white" href="index.html">Home</a>
-            <a class="nav-link text-white" href="services.html">Services</a>
-            <a class="nav-link text-white" href="contact.html">Contact</a>
-            <a class="nav-link text-white" href="form.html">Form</a>
-        </div>
-    </nav>
 
-    <main class="container mt-5">
-        <h1>About StudentPortal</h1>
-        <p>StudentPortal supports students in their learning journey.</p>
-        <p>Explore educational resources and discover our services.</p>
-        <a href="index.html" class="btn btn-primary">Back to Home</a>
-    </main>
+    <!-- Internal CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f7ff;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, #2563eb, #6d28d9);
+            padding: 16px 0;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .navbar-brand {
+            font-size: 27px;
+            font-weight: 800;
+            color: white !important;
+        }
+
+        .navbar-nav {
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 9px 14px !important;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        /* Hero Section */
+        .about-hero {
+            padding: 85px 0;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(167, 139, 250, 0.35), transparent 30%),
+                linear-gradient(135deg, #eff6ff, #f5f3ff, #eef2ff);
+        }
+
+        .hero-content {
+            animation: slideUp 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 9px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            font-weight: 800;
+            line-height: 1.2;
+            color: #172554;
+            margin-bottom: 22px;
+        }
+
+        .about-hero h1 span {
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-hero p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        /* Hero Illustration */
+        .about-visual {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            padding: 45px 30px;
+            min-height: 300px;
+            border-radius: 28px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(79, 70, 229, 0.25);
+            transition: 0.4s;
+        }
+
+        .about-visual:hover {
+            transform: translateY(-7px);
+        }
+
+        .about-visual .big-icon {
+            font-size: 75px;
+            margin-bottom: 20px;
+        }
+
+        .about-visual h3 {
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .about-visual p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 16px;
+            margin: 12px 0 0;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            display: inline-block;
+            padding: 13px 27px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            margin: 5px 8px 5px 0;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(90deg, #2563eb, #6d28d9);
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary-custom:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-outline-custom {
+            background: white;
+            border: 2px solid #2563eb;
+            color: #2563eb;
+        }
+
+        .btn-outline-custom:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Mission and Vision */
+        .mission-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #172554;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        .info-card {
+            height: 100%;
+            padding: 32px;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            border-color: #a5b4fc;
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
+        }
+
+        .info-icon {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            font-size: 30px;
+            margin-bottom: 22px;
+            background: #dbeafe;
+        }
+
+        .info-card h3 {
+            font-size: 23px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        /* Benefits */
+        .benefits-section {
+            padding: 80px 0;
+            background: #f5f7ff;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 22px;
+            border-radius: 14px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.08);
+        }
+
+        .check-icon {
+            font-size: 25px;
+            color: #2563eb;
+        }
+
+        .benefit-item h5 {
+            font-weight: 750;
+            margin-bottom: 8px;
+        }
+
+        .benefit-item p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 70px 0;
+            background: linear-gradient(120deg, #1d4ed8, #6d28d9);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #4338ca;
+            padding: 13px 30px;
+            border-radius: 10px;
+            font-weight: 750;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #e0e7ff;
+            color: #312e81;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #a5b4fc;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Animation */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            .navbar-nav {
+                padding-top: 15px;
+                gap: 3px;
+            }
+
+            .about-hero {
+                text-align: center;
+                padding: 60px 0;
+            }
+
+            .about-visual {
+                margin-top: 35px;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .cta-section h2 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            🎓 StudentPortal
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="about.html">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="form.html">Student Form</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- About Hero Section -->
+<section class="about-hero">
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7 hero-content">
+
+                <span class="hero-badge">
+                    ✨ Get to Know Us
+                </span>
+
+                <h1>
+                    About <span>StudentPortal</span>
+                </h1>
+
+                <p>
+                    StudentPortal supports students throughout their
+                    learning journey. We aim to make educational resources
+                    and academic information easier to explore through
+                    a simple and user-friendly platform.
+                </p>
+
+                <p>
+                    Our goal is to encourage students to discover
+                    opportunities, develop their skills, and work toward
+                    their academic goals.
+                </p>
+
+                <a href="services.html" class="btn-custom btn-primary-custom">
+                    Explore Services →
+                </a>
+
+                <a href="form.html" class="btn-custom btn-outline-custom">
+                    Get Started
+                </a>
+
+            </div>
+
+            <div class="col-lg-5">
+
+                <div class="about-visual">
+
+                    <div class="big-icon">🎓</div>
+
+                    <h3>Learn. Explore. Achieve.</h3>
+
+                    <p>
+                        Your learning journey matters.
+                        Discover opportunities and keep growing.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Mission and Vision Section -->
+<section class="mission-section">
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Our Purpose</h2>
+
+            <p>
+                Helping students take the next step in their education.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+                <div class="info-card">
+
+                    <div class="info-icon">🎯</div>
+
+                    <h3>Our Mission</h3>
+
+                    <p>
+                        Our mission is to provide students with an
+                        accessible and organized platform to explore
+                        educational information, learn about services,
+                        and find useful academic resources.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-card">
+
+                    <div class="info-icon">🚀</div>
+
+                    <h3>Our Vision</h3>
+
+                    <p>
+                        Our vision is to encourage continuous learning,
+                        support academic development, and help students
+                        discover opportunities that contribute to
+                        their future growth.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits-section">
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Why StudentPortal?</h2>
+
+            <p>
+                A simple place to begin exploring your learning journey.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+                <div class="benefit-item">
+
+                    <span class="check-icon">✓</span>
+
+                    <div>
+                        <h5>Easy Navigation</h5>
+
+                        <p>
+                            Find information through a clear and
+                            easy-to-use interface.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="benefit-item">
+
+                    <span class="check-icon">✓</span>
+
+                    <div>
+                        <h5>Educational Resources</h5>
+
+                        <p>
+                            Explore information that supports your
+                            educational interests and goals.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="benefit-item">
+
+                    <span class="check-icon">✓</span>
+
+                    <div>
+                        <h5>Student-Friendly Design</h5>
+
+                        <p>
+                            Browse the portal on desktops, tablets,
+                            and mobile devices.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="benefit-item">
+
+                    <span class="check-icon">✓</span>
+
+                    <div>
+                        <h5>Simple Access</h5>
+
+                        <p>
+                            Quickly navigate between the portal's
+                            pages and available information.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Call To Action -->
+<section class="cta-section">
+    <div class="container">
+
+        <h2>Let's Start Your Learning Journey!</h2>
+
+        <p>
+            Explore our services and take the next step toward your goals.
+        </p>
+
+        <a href="services.html" class="cta-button">
+            Explore Our Services →
+        </a>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+
+        <p><strong>🎓 StudentPortal</strong></p>
+
+        <p>Learn Better. Grow Faster.</p>
+
+        <div class="my-3">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p>
+            &copy; 2026 StudentPortal. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
