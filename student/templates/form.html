@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Form - StudentPortal{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0 p-4">
+      <div class="card-body">
+        <h3 class="card-title text-primary mb-3">Student Form</h3>
+        <form method="post">
+          {% csrf_token %}
+          {% if form %}
+            {{ form.as_p }}
+          {% else %}
+            <div class="mb-3">
+              <label for="student_name" class="form-label">Student Name</label>
+              <input type="text" class="form-control" id="student_name" name="name" placeholder="Enter full name" required>
+            </div>
+            <div class="mb-3">
+              <label for="student_email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="student_email" name="email" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="course" class="form-label">Course</label>
+              <input type="text" class="form-control" id="course" name="course" placeholder="e.g. Computer Science">
+            </div>
+          {% endif %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
